@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <meta charset="utf-8">
+ <title>Menhirs on Map : Data Contribution</title>
+ <link rel="stylesheet" type="text/css" href="mystyles_menhir.css">
+ <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+ <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script
+ src="https://code.jquery.com/jquery-3.3.1.js"
+ integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+ crossorigin="anonymous"></script>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<main role="main">
+    <div class="grid-container">   
+     
+        <div class = "intro">
+           <div class="header"> Welcome to <b>"Menhirs on the Map"</b> . Leave traces on the digital map to record your journeys. This works only for Rohit(<a href="https://twitter.com/rohit7gupta">@rohit7gupta</a>) at the moment.
+        
+        </div>
+        <div class="input">
+              <label for="exampleInputEmail1">Title</label></div>
+        <div class="data">     
+              <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Title"></div>
+        
+        <div class="input">
+              <label for="shortDesc">Short Description (120 words)</label> </div>
+              <div class="data"> 
+              <textarea name="shortDesc" id="sDesc" cols="20" rows="5"></textarea> </div>
+        
+        <div class="input">
+            <label for="shortDesc">Long Description (1000 words)</label></div>
+            <div class="data"> 
+              <textarea name="longDesc" id="lDesc" cols="20" rows="20"></textarea> <br>
+        </div>
+        <div class="input">
+              <button onclick="getLocation()">Get Location</button></div>
+              <div class="data"> <div id="loc">GPS Location should come here</div>
+        </div>
+        <div class="input" id="status"></div>
+        <div class="data">
+              <button id="submit">Tell it to Google</button>
+        </div>   
+
+        
+        </div>
+    </div>
+        
+    </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA7rpbasdAUajN3dBCzmqI7MB4_p8Z1LcU",
+    authDomain: "menhirmaps.firebaseapp.com",
+    databaseURL: "https://menhirmaps.firebaseio.com",
+    projectId: "menhirmaps",
+    storageBucket: "menhirmaps.appspot.com",
+    messagingSenderId: "260331680445"
+  };
+  firebase.initializeApp(config);
+
+  var ref = firebase.database().ref().child("Italy");
+  var x = document.getElementById("loc");
+  var lat='';
+  var long='';
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+    
+function showPosition(position) {
+    x.innerHTML=position.coords.latitude + 
+    " " + position.coords.longitude;
+    lat=position.coords.latitude;
+    long=position.coords.longitude;
+}
+// console.log(lat);
+// console.log(long);
+
+
+ $(document).ready(function(){
+            $("#status").css("background-color", "red");
+            $("#submit").click(function(){
+                  
+                //   var message = {
+                //     name: $("#name").val(), age : $("#age").val().toString()
+                //   }
+                  var message={
+      title: $("#title").val(), sDesc : $("#sDesc").val(),lDesc : $("#lDesc").val(),
+      lat : lat,long : long
+  };
+                  console.log(message);
+                  console.log("clicked")
+                  var messageRef= ref.push(message);
+                  console.log(messageRef.keynode);
+                  $("#status").css("background-color", "green");
+              });
+            });
+
+    </script>
+
+    
+    
+</main>
+
+</body>
+
+</html>
+
+
