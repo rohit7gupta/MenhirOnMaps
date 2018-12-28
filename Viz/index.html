@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+ <meta charset="UTF-8">
+ <title> Rohit's Menhirs</title>
+ <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+
+
+<script
+ src="https://code.jquery.com/jquery-3.3.1.js"
+ integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+ crossorigin="anonymous"></script>
+<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+ 
+
+</head>
+
+<body>
+
+  <div id='map'></div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiaW5kaWFudGlua2VyIiwiYSI6ImNpcTFzYnpqejAxMGlmaG5uOWlheDM3d2sifQ.IHWtGSGCMWq7T_SQCuv7LA';
+var map = L.mapbox.map('map', 'mapbox.streets')
+    .setView([42.25, 2.432], 5.4);
+
+</script>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  
+  var config = {
+    apiKey: "AIzaSyA7rpbasdAUajN3dBCzmqI7MB4_p8Z1LcU",
+    authDomain: "menhirmaps.firebaseapp.com",
+    databaseURL: "https://menhirmaps.firebaseio.com",
+    projectId: "menhirmaps",
+    storageBucket: "menhirmaps.appspot.com",
+    messagingSenderId: "260331680445"
+  };
+  firebase.initializeApp(config);
+
+   var ref = firebase.database().ref().child("Italy");
+ let properties='';
+ ref.on("value", function(snapshot) {
+   properties = snapshot.val();
+   //console.log(properties);
+
+   $.each(properties, function(i, val){
+      // console.log();
+       var content = '<h4>' +properties[i].title+ '<\/h4>'+
+        '<p>'+ properties[i].sDesc + '<\/p>';
+        var x = L.marker();
+       x = L.marker([properties[i].lat,properties[i].long]).bindPopup(content).addTo(map);
+   });
+   }, function (error) {
+     console.log("Error: " + error.code);
+ });
+</script>
+<div id="info">
+
+</div>
+
+</body>
+
+</html>
