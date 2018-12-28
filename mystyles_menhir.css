@@ -1,5 +1,5 @@
 .grid-container {
-    padding: 40px;
+    padding-top: 40px;
     display: grid;
     grid-column-gap: 10px;
     grid-row-gap: 20px;
@@ -9,11 +9,12 @@
 }
 
 .intro {
+    padding: 5%;
     grid-row: 1;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: auto auto auto auto auto;
-    grid-row-gap: inherit;
+    grid-row-gap: 10px;
 }
 .header
 {
@@ -34,10 +35,22 @@
     grid-column: 2;
 }
 
-textarea{
-    outline-color: deepskyblue;
-    border: 2px;
+textarea, input{
+  
+    border: solid 2px deepskyblue;
+    width: inherit;
 }
 a{
     background: yellow;
 }
+
+#status
+{
+padding-left: 10px; 
+
+}
+#gpsBtn
+{
+width:10%;
+}
+

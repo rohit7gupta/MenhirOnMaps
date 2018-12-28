@@ -23,31 +23,35 @@
     <div class="grid-container">   
      
         <div class = "intro">
-           <div class="header"> Welcome to <b>"Menhirs on the Map"</b> . Leave traces on the digital map to record your journeys. This works only for Rohit(<a href="https://twitter.com/rohit7gupta">@rohit7gupta</a>) at the moment.
+           <div class="header"> Welcome to <b>"Menhirs on the Map"</b> . Leave traces on the digital map to record your journeys. This works only for Rohit (<a href="https://twitter.com/rohit7gupta">@rohit7gupta</a>) at the moment.
         
         </div>
         <div class="input">
-              <label for="exampleInputEmail1">Title</label></div>
+              <label for="exampleInputEmail1">Text on Menhir</label></div>
         <div class="data">     
-              <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Title"></div>
+              <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Text"></div>
         
         <div class="input">
               <label for="shortDesc">Short Description (120 words)</label> </div>
               <div class="data"> 
-              <textarea name="shortDesc" id="sDesc" cols="20" rows="5"></textarea> </div>
+              <textarea name="shortDesc" id="sDesc" cols="20" rows="5" placeholder="Short Description"></textarea> </div>
         
         <div class="input">
             <label for="shortDesc">Long Description (1000 words)</label></div>
             <div class="data"> 
-              <textarea name="longDesc" id="lDesc" cols="20" rows="20"></textarea> <br>
+              <textarea name="longDesc" id="lDesc" cols="20" rows="20" placeholder="Long Description"></textarea> <br>
         </div>
-        <div class="input">
+        <div class="input" id="gpsBtn">
               <button onclick="getLocation()">Get Location</button></div>
               <div class="data"> <div id="loc">GPS Location should come here</div>
         </div>
-        <div class="input" id="status"></div>
+        <div class="input">
+             <svg height="inherit" width="inherit">
+                <circle cx="70" cy="15" r="10" />
+            </svg>         
+        </div>
         <div class="data">
-              <button id="submit">Tell it to Google</button>
+              <button id="submit">Place Menhir</button>
         </div>   
 
         
@@ -92,7 +96,7 @@ function showPosition(position) {
 
 
  $(document).ready(function(){
-            $("#status").css("background-color", "red");
+            $("circle").attr("fill", "red");
             $("#submit").click(function(){
                   
                 //   var message = {
@@ -106,7 +110,7 @@ function showPosition(position) {
                   console.log("clicked")
                   var messageRef= ref.push(message);
                   console.log(messageRef.keynode);
-                  $("#status").css("background-color", "green");
+                  $("circle").attr("fill", "green");
               });
             });
 
