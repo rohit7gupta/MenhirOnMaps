@@ -53,10 +53,12 @@
         <div class="data">
               <button id="submit">Place Menhir</button>
         </div> 
+
+
         <div class="data">
               <a href="./Viz/index.html">View Map</button>
         </div> 
-  
+           
 
         
         </div>
@@ -94,6 +96,10 @@ function showPosition(position) {
     " " + position.coords.longitude;
     lat=position.coords.latitude;
     long=position.coords.longitude;
+    if(lat&&long)
+     {
+        $("button#submit").attr("disabled",false);
+     }
 }
 // console.log(lat);
 // console.log(long);
@@ -101,6 +107,7 @@ function showPosition(position) {
 
  $(document).ready(function(){
             $("circle").attr("fill", "red");
+            $("button#submit").attr("disabled",true);
             $("#submit").click(function(){
                   
                 //   var message = {
@@ -113,10 +120,17 @@ function showPosition(position) {
                   console.log(message);
                   console.log("clicked")
                   var messageRef= ref.push(message);
-                  console.log(messageRef.keynode);
-                  $("circle").attr("fill", "green");
-                  $("input.data").text('');  
-                  $("textarea.data").text('');  
+                   $("#title").val('');
+                   $("#sDesc").val('');
+                   $("#lDesc").val('');
+                     lat='';
+                     lat='';
+                    x.innerHTML = "Get new GPS location";
+                    $("button#submit").attr("disabled",true);
+                    $("circle").attr("fill", "green");
+                    
+
+                   
               });
             });
 
