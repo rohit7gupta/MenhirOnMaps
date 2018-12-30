@@ -29,7 +29,7 @@
         <div class="input">
               <label for="exampleInputEmail1">Text on Menhir</label></div>
         <div class="data">     
-              <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Text"></div>
+              <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Title"></div>
         
         <div class="input">
               <label for="shortDesc">Short Description (120 words)</label> </div>
@@ -115,6 +115,8 @@ function showPosition(position) {
                   var messageRef= ref.push(message);
                   console.log(messageRef.keynode);
                   $("circle").attr("fill", "green");
+                  $("input.data").text('');  
+                  $("textarea.data").text('');  
               });
             });
 
