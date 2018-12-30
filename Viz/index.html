@@ -53,13 +53,30 @@ var map = L.mapbox.map('map', 'mapbox.streets')
  ref.on("value", function(snapshot) {
    properties = snapshot.val();
    //console.log(properties);
-
+    var j=0;
    $.each(properties, function(i, val){
       // console.log();
        var content = '<h4>' +properties[i].title+ '<\/h4>'+
         '<p>'+ properties[i].sDesc + '<\/p>';
         var x = L.marker();
-       x = L.marker([properties[i].lat,properties[i].long]).bindPopup(content).addTo(map);
+       if((Object.keys(properties).length-1)==j)
+      { x = L.marker([properties[i].lat,properties[i].long], {
+    icon: L.mapbox.marker.icon({
+        'marker-size': 'medium',
+        'marker-color': '#599E00'
+    })
+}).bindPopup(content).addTo(map);
+console.log("last");
+}
+       else
+    {   x = L.marker([properties[i].lat,properties[i].long],{
+    icon: L.mapbox.marker.icon({
+        'marker-size': 'small',
+        'marker-color': '#FD0900'
+    })
+}).bindPopup(content).addTo(map);}
+j++;
+console.log(j);
    });
    }, function (error) {
      console.log("Error: " + error.code);
