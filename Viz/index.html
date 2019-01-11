@@ -14,6 +14,7 @@
  crossorigin="anonymous"></script>
 <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
 <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -29,7 +30,14 @@
 L.mapbox.accessToken = 'pk.eyJ1IjoiaW5kaWFudGlua2VyIiwiYSI6ImNpcTFzYnpqejAxMGlmaG5uOWlheDM3d2sifQ.IHWtGSGCMWq7T_SQCuv7LA';
 var map = L.mapbox.map('map', 'mapbox.streets')
     .setView([42.25, 2.432], 5.4);
-
+map.addSource('bcurve', {
+  type: 'geojson',
+  data: {
+    type: 'FeatureCollection',
+    features: [
+    ]
+  }
+});
 </script>
 
 
@@ -48,37 +56,66 @@ var map = L.mapbox.map('map', 'mapbox.streets')
   };
   firebase.initializeApp(config);
 
-   var ref = firebase.database().ref().child("Italy");
- let properties='';
+var ref = firebase.database().ref().child("Italy");
+let properties='';
  ref.on("value", function(snapshot) {
    properties = snapshot.val();
    //console.log(properties);
     var j=0;
-   $.each(properties, function(i, val){
+    var polyline= L.polyline([], {
+        color: '#000',
+        smoothFactor: 30.0
+      }).addTo(map)
+
+    // var pathLine = turf.lineString([[0,0],[0,0]]);
+    // pathLine.geometry.coordinates.pop();
+    // pathLine.geometry.coordinates.pop();
+   $.each(properties, function(i, val){   //Iteration Loop
       // console.log();
+
+
+
        var content = '<h4>' +properties[i].title+ '<\/h4>'+
         '<p>'+ properties[i].sDesc + '<\/p>';
         var x = L.marker();
-       if((Object.keys(properties).length-1)==j)
+       if((Object.keys(properties).length-1)==j) //last element
       { x = L.marker([properties[i].lat,properties[i].long], {
     icon: L.mapbox.marker.icon({
         'marker-size': 'medium',
-        'marker-color': '#599E00'
+        "marker-symbol": 'triangle',
+        'marker-color': '#30ED55'
     })
 }).bindPopup(content).addTo(map);
 console.log("last");
 }
        else
-    {   x = L.marker([properties[i].lat,properties[i].long],{
+    {   x = L.marker([properties[i].lat,properties[i].long],{ //other elements
     icon: L.mapbox.marker.icon({
         'marker-size': 'small',
-        'marker-color': '#FD0900'
+        "marker-symbol":  j,
+        'marker-color': '#00A1B3'
     })
 }).bindPopup(content).addTo(map);}
 j++;
-console.log(j);
-   });
-   }, function (error) {
+
+// pathLine.geometry.coordinates.push([properties[i].lat,properties[i].long])
+polyline.addLatLng(
+        L.latLng(properties[i].lat,properties[i].long));
+});
+
+// var curved = turf.bezierSpline(pathLine);
+// var polyline= L.polyline(curved.geometry.coordinates, {
+//         color: '#000',
+//         smoothFactor: 30.0
+//       }).addTo(map)
+
+
+
+
+
+// console.log(curved.geometry.coordinates);
+
+}, function (error) {
      console.log("Error: " + error.code);
  });
 </script>
