@@ -8,6 +8,8 @@
  <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
  <link href="mystyle.css" rel="stylesheet">
 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <script
  src="https://code.jquery.com/jquery-3.3.1.js"
  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -25,9 +27,9 @@
     <div class="grid-container">
         
         <div class="grid-item navbar col1">
-            Menhirs on the Map
+            Digital Menhirs
         </div>
-        <div class="grid-item navbar">
+        <div class="grid-item navbar collect">
                 Collections > Italy
         </div>
         <div class="grid-item navbar " id ="about">
@@ -67,6 +69,7 @@ var map = L.mapbox.map('map', 'mapbox.streets')
 <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
 <script>
  var eV;
+ 
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyA7rpbasdAUajN3dBCzmqI7MB4_p8Z1LcU",
@@ -103,7 +106,7 @@ var properties='';
       { x = L.marker([properties[i].lat,properties[i].long], {
     icon: L.mapbox.marker.icon({
         'marker-size': 'medium',
-        "marker-symbol": 'triangle',
+        "marker-symbol": j,
         'marker-color': '#30ED55'
             }),
       alt: j
