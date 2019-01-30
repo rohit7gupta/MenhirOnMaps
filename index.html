@@ -3,145 +3,147 @@
 <html>
 
 <head>
- <meta charset="UTF-8">
- <meta charset="utf-8">
- <title>Menhirs on Map : Data Contribution</title>
- <link rel="stylesheet" type="text/css" href="mystyles_menhir.css">
- <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
- <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script
- src="https://code.jquery.com/jquery-3.3.1.js"
- integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
- crossorigin="anonymous"></script>
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <title>Menhirs on Map : Data Contribution</title>
+  <link rel="stylesheet" type="text/css" href="mystyles_menhir.css">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
 
 </head>
 
 <body>
 
-<main role="main">
-    <div class="grid-container">   
-     
-        <div class = "intro">
-           <div class="header"> Welcome to <b>"Menhirs on the Map"</b> . Leave traces on the digital map to record your journeys. This works only for Rohit (<a id="tw" href="https://twitter.com/rohit7gupta">@rohit7gupta</a>) at the moment.
-        
+  <main role="main">
+    <div class="grid-container">
+
+      <div class="intro">
+        <div class="header"> Welcome to <b>"Menhirs on the Map"</b> . Leave traces on the digital map to record your
+          journeys. This works only for Rohit (<a id="tw" href="https://twitter.com/rohit7gupta">@rohit7gupta</a>) at
+          the moment.
+
         </div>
         <div class="input">
-              <label for="exampleInputEmail1">Text on Menhir</label></div>
-        <div class="data">     
-              <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Title"></div>
-        
+          <label for="exampleInputEmail1">Text on Menhir</label></div>
+        <div class="data">
+          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Title"></div>
+
         <div class="input">
-              <label for="shortDesc">Short Description (120 words)</label> </div>
-              <div class="data"> 
-              <textarea name="shortDesc" id="sDesc" cols="20" rows="5" placeholder="Short Description"></textarea> </div>
-        
+          <label for="shortDesc">Short Description (120 words)</label> </div>
+        <div class="data">
+          <textarea name="shortDesc" id="sDesc" cols="20" rows="5" placeholder="Short Description"></textarea> </div>
+
         <div class="input">
-            <label for="shortDesc">Long Description (1000 words)</label></div>
-            <div class="data"> 
-              <textarea name="longDesc" id="lDesc" cols="20" rows="20" placeholder="Long Description"></textarea> <br>
+          <label for="shortDesc">Long Description (1000 words)</label></div>
+        <div class="data">
+          <textarea name="longDesc" id="lDesc" cols="20" rows="20" placeholder="Long Description"></textarea> <br>
         </div>
         <div class="input" id="gpsBtn">
-              <button onclick="getLocation()">Get Location</button></div>
-              <div class="data"> <div id="loc">GPS Location should come here</div>
+          <button onclick="getLocation()">Get Location</button></div>
+        <div class="data">
+          <div id="loc">GPS Location should come here</div>
         </div>
         <div class="input">
-             <svg height="inherit" width="inherit">
-                <circle cx="70" cy="15" r="10" />
-            </svg>         
+          <svg height="inherit" width="inherit">
+            <circle cx="70" cy="15" r="10" />
+          </svg>
         </div>
         <div class="data">
-              <button id="submit">Place Menhir</button>
-        </div> 
+          <button id="submit">Place Menhir</button>
+        </div>
 
 
         <div class="data">
-              <a href="./Viz/index.html">View Map</button>
-        </div> 
-           
-
-        
+          <a href="./Viz/index.html">View Map</button>
         </div>
+
+
+
+      </div>
     </div>
-        
+
     </div>
-</div>
-<script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyA7rpbasdAUajN3dBCzmqI7MB4_p8Z1LcU",
-    authDomain: "menhirmaps.firebaseapp.com",
-    databaseURL: "https://menhirmaps.firebaseio.com",
-    projectId: "menhirmaps",
-    storageBucket: "menhirmaps.appspot.com",
-    messagingSenderId: "260331680445"
-  };
-  firebase.initializeApp(config);
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA7rpbasdAUajN3dBCzmqI7MB4_p8Z1LcU",
+        authDomain: "menhirmaps.firebaseapp.com",
+        databaseURL: "https://menhirmaps.firebaseio.com",
+        projectId: "menhirmaps",
+        storageBucket: "menhirmaps.appspot.com",
+        messagingSenderId: "260331680445"
+      };
+      firebase.initializeApp(config);
 
-  var ref = firebase.database().ref().child("Italy");
-  var x = document.getElementById("loc");
-  var lat='';
-  var long='';
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-    
-function showPosition(position) {
-    x.innerHTML=position.coords.latitude + 
-    " " + position.coords.longitude;
-    lat=position.coords.latitude;
-    long=position.coords.longitude;
-    if(lat&&long)
-     {
-        $("button#submit").attr("disabled",false);
-     }
-}
-// console.log(lat);
-// console.log(long);
+      var ref = firebase.database().ref().child("Berlin");
+      var x = document.getElementById("loc");
+      var lat = '';
+      var long = '';
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+        x.innerHTML = position.coords.latitude +
+          " " + position.coords.longitude;
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+        if (lat && long) {
+          $("button#submit").attr("disabled", false);
+        }
+      }
+      // console.log(lat);
+      // console.log(long);
 
 
- $(document).ready(function(){
-            $("circle").attr("fill", "red");
-            $("button#submit").attr("disabled",true);
-            $("#submit").click(function(){
-                  
-                //   var message = {
-                //     name: $("#name").val(), age : $("#age").val().toString()
-                //   }
-                  var message={
-      title: $("#title").val(), sDesc : $("#sDesc").val(),lDesc : $("#lDesc").val(),
-      lat : lat,long : long
-  };
-                  console.log(message);
-                  console.log("clicked")
-                  var messageRef= ref.push(message);
-                   $("#title").val('');
-                   $("#sDesc").val('');
-                   $("#lDesc").val('');
-                     lat='';
-                     lat='';
-                    x.innerHTML = "Get new GPS location";
-                    $("button#submit").attr("disabled",true);
-                    $("circle").attr("fill", "green");
-                    
+      $(document).ready(function () {
+        $("circle").attr("fill", "red");
+        $("button#submit").attr("disabled", true);
+        $("#submit").click(function () {
 
-                   
-              });
-            });
+          //   var message = {
+          //     name: $("#name").val(), age : $("#age").val().toString()
+          //   }
+          var message = {
+            title: $("#title").val(),
+            sDesc: $("#sDesc").val(),
+            lDesc: $("#lDesc").val(),
+            lat: lat,
+            long: long
+          };
+          console.log(message);
+          console.log("clicked")
+          var messageRef = ref.push(message);
+          $("#title").val('');
+          $("#sDesc").val('');
+          $("#lDesc").val('');
+          lat = '';
+          lat = '';
+          x.innerHTML = "Get new GPS location";
+          $("button#submit").attr("disabled", true);
+          $("circle").attr("fill", "green");
 
+
+
+        });
+      });
     </script>
 
-    
-    
-</main>
+
+
+  </main>
 
 </body>
 
 </html>
-
-

@@ -3,170 +3,177 @@
 <html>
 
 <head>
- <meta charset="UTF-8">
- <title> Rohit's Menhirs</title>
- <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
- <link href="mystyle.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title> Rohit's Menhirs</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+  <link href="mystyle.css" rel="stylesheet">
 
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script
- src="https://code.jquery.com/jquery-3.3.1.js"
- integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
- crossorigin="anonymous"></script>
-<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
- 
+
 
 </head>
 
 <body>
-    <div class="grid-container">
-        
-        <div class="grid-item navbar col1">
-            Digital Menhirs
-        </div>
-        <div class="grid-item navbar collect">
-                Collections > Italy
-        </div>
-        <div class="grid-item navbar " id ="about">
-                    About
-        </div>
-        <div class="grid-item navbar right">
-               <a href="https://goo.gl/forms/odxB7sl04iWmGyGF2" target="_blank">Feedback</a> 
-        </div>
-        <div class="hori">
+  <div class="grid-container">
 
-        </div>
-        <div class="cords">
-            <span id="lat">Click on a </span> <br> <span id="long">Menhir to begin</span>
-        </div>
-        <div id="lDesc">
-          This tool helps me visualize the path of my travels and thoughts I have been having as I engage with the context. I hope you enjoy reading my personal thoughts around a point.
-          You should see this on a desktop as this page is not optimized for web viewing. Try zooming in to particular group of markers. 
-          <br>
-          <br>
-          To know more, click on About tab. 
-          <br>
-          <br>
-          I want <a href="https://goo.gl/forms/odxB7sl04iWmGyGF2" target="_blank">feedback</a> on this work. Click on that link or feedback tab above.
-               
-        </div>
-        <div id='map'></div>
+    <div class="grid-item navbar col1">
+      Digital Menhirs
+    </div>
+    <div class="grid-item navbar collect">
+      Collections > Italy
+    </div>
+    <div class="grid-item navbar " id="about">
+      About
+    </div>
+    <div class="grid-item navbar right">
+      <a href="https://goo.gl/forms/odxB7sl04iWmGyGF2" target="_blank">Feedback</a>
+    </div>
+    <div class="hori">
 
     </div>
+    <div class="cords">
+      <span id="lat">Click on a </span> <br> <span id="long">Menhir to begin</span>
+    </div>
+    <div id="lDesc">
+      This tool helps me visualize the path of my travels and thoughts I have been having as I engage with the context.
+      I hope you enjoy reading my personal thoughts around a point.
+      You should see this on a desktop as this page is not optimized for web viewing. Try zooming in to particular
+      group of markers.
+      <br>
+      <br>
+      To know more, click on About tab.
+      <br>
+      <br>
+      I want <a href="https://goo.gl/forms/odxB7sl04iWmGyGF2" target="_blank">feedback</a> on this work. Click on that
+      link or feedback tab above.
+
+    </div>
+    <div id='map'></div>
+
+  </div>
 
 
-<script>
-L.mapbox.accessToken = 'pk.eyJ1IjoiaW5kaWFudGlua2VyIiwiYSI6ImNpcTFzYnpqejAxMGlmaG5uOWlheDM3d2sifQ.IHWtGSGCMWq7T_SQCuv7LA';
-var map = L.mapbox.map('map', 'mapbox.streets')
-    .setView([42.25, 2.432], 5.4);
-</script>
+  <script>
+    L.mapbox.accessToken =
+      'pk.eyJ1IjoiaW5kaWFudGlua2VyIiwiYSI6ImNpcTFzYnpqejAxMGlmaG5uOWlheDM3d2sifQ.IHWtGSGCMWq7T_SQCuv7LA';
+    var map = L.mapbox.map('map', 'mapbox.streets')
+      .setView([42.25, 2.432], 5.4);
+  </script>
 
-<script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
-<script>
- var eV;
- 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyA7rpbasdAUajN3dBCzmqI7MB4_p8Z1LcU",
-    authDomain: "menhirmaps.firebaseapp.com",
-    databaseURL: "https://menhirmaps.firebaseio.com",
-    projectId: "menhirmaps",
-    storageBucket: "menhirmaps.appspot.com",
-    messagingSenderId: "260331680445"
-  };
-  firebase.initializeApp(config);
+  <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
+  <script>
+    var eV;
 
-var ref = firebase.database().ref().child("Italy"); //Get Data for Branch Italy
-var properties='';
- ref.on("value", function(snapshot) {
-   properties = snapshot.val();
-   //console.log(properties);
-    var j=0;
-    var polyline= L.polyline([], {  //Create empty polyline
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyA7rpbasdAUajN3dBCzmqI7MB4_p8Z1LcU",
+      authDomain: "menhirmaps.firebaseapp.com",
+      databaseURL: "https://menhirmaps.firebaseio.com",
+      projectId: "menhirmaps",
+      storageBucket: "menhirmaps.appspot.com",
+      messagingSenderId: "260331680445"
+    };
+    firebase.initializeApp(config);
+
+    var ref = firebase.database().ref().child("Berlin"); //Get Data for Branch Italy
+    var properties = '';
+    ref.on("value", function (snapshot) {
+      properties = snapshot.val();
+      //console.log(properties);
+      var j = 0;
+      var polyline = L.polyline([], { //Create empty polyline
         color: '#000',
         smoothFactor: 30.0
       }).addTo(map)
 
-    // var pathLine = turf.lineString([[0,0],[0,0]]);
-    // pathLine.geometry.coordinates.pop();
-    // pathLine.geometry.coordinates.pop();
-    var myLayer = L.mapbox.featureLayer().addTo(map);
+      // var pathLine = turf.lineString([[0,0],[0,0]]);
+      // pathLine.geometry.coordinates.pop();
+      // pathLine.geometry.coordinates.pop();
+      var myLayer = L.mapbox.featureLayer().addTo(map);
 
-   $.each(properties, function(i, val){   //Iteration Loop
-      // console.log();
-       var content = '<h4>' +properties[i].title+ '<\/h4>'+
-        '<p>'+ properties[i].sDesc + '<\/p>';
+      $.each(properties, function (i, val) { //Iteration Loop
+        // console.log();
+        var content = '<h4>' + properties[i].title + '<\/h4>' +
+          '<p>' + properties[i].sDesc + '<\/p>';
         var x = L.marker();
-       if((Object.keys(properties).length-1)==j) //last element
-      { x = L.marker([properties[i].lat,properties[i].long], {
-    icon: L.mapbox.marker.icon({
-        'marker-size': 'medium',
-        "marker-symbol": j,
-        'marker-color': '#30ED55'
+        if ((Object.keys(properties).length - 1) == j) //last element
+        {
+          x = L.marker([properties[i].lat, properties[i].long], {
+            icon: L.mapbox.marker.icon({
+              'marker-size': 'medium',
+              "marker-symbol": j,
+              'marker-color': '#30ED55'
             }),
-      alt: j
-      }).bindPopup(content).addTo(myLayer);
-      
-      console.log("last");
-      }
-       else
-      {   
-        x = L.marker([properties[i].lat,properties[i].long],{ //other elements
-        icon: L.mapbox.marker.icon({
-        'marker-size': 'small',
-        "marker-symbol":  j,
-        'marker-color': '#00A1B3'
-      }),
-      alt: j
-    }).bindPopup(content).addTo(myLayer);}
-  j++;
+            alt: j
+          }).bindPopup(content).addTo(myLayer);
 
-// pathLine.geometry.coordinates.push([properties[i].lat,properties[i].long])
-polyline.addLatLng(
-        L.latLng(properties[i].lat,properties[i].long));
+          console.log("last");
+        } else {
+          x = L.marker([properties[i].lat, properties[i].long], { //other elements
+            icon: L.mapbox.marker.icon({
+              'marker-size': 'small',
+              "marker-symbol": j,
+              'marker-color': '#00A1B3'
+            }),
+            alt: j
+          }).bindPopup(content).addTo(myLayer);
+        }
+        j++;
 
-
-
-});
-
-// var curved = turf.bezierSpline(pathLine);
-// var polyline= L.polyline(curved.geometry.coordinates, {
-//         color: '#000',
-//         smoothFactor: 30.0
-//       }).addTo(map)
-myLayer.on('click',function(e) {
-  eV=e.layer.options.alt
-  //console.log(eV);
-  //console.log(Object.entries(properties)[eV][1].lDesc);
-  document.getElementById('lDesc').innerHTML=Object.entries(properties)[eV][1].lDesc;
-  document.getElementById('lat').innerHTML=Object.entries(properties)[eV][1].lat;
-  document.getElementById('long').innerHTML=Object.entries(properties)[eV][1].long;
-});
-
-$('#about').click(function(){
-  document.getElementById('lDesc').innerHTML=" I was always curious about the act of travelling. How it changes us and what mental processes take place in our heads as we interface with a different social and cultural setting. It makes me think like the first explorers but with a guide book. It feels there are lots of knowledge transformations that happen during travelling. We assimilate information from our information sources of trust. This may help us to make an expected reality when we visit a place. On my actual visit I found this expected reality to clash with what I actually saw. I could either conform to the expected reality and click pictures and do nothing reflective or stand back and analyse the differences and document them."+"<br><br>"+
-  
-  "This made me make this tool for digital reflection about the travelled space. It was made on an airport. I compare the activity of travel with exploration of unknown by comparing with the known. As we go around I think about how the place affects me, what I expect, what I see, and what it teaches me. I call these mental events, tied to the geophysical as - Digital Menhirs." +  "<br><br>Menhirs were supposedly the second man made thing on the face of the earth. The first on was the path. This is in reference to my reading of the book - Walkscapes by Francesco Careri. I will explore and hope to build make more self-reflecting digital tools this year. This is the first one. <br><br> I crave feedback and would be previledged to get your suggestions. I forgot to tell, I am"+"<a href=\"http://rohitg.in/\" target=\"_blank\"> Rohit.</a>"+"<br><br> To go back on menhirs just click on any menhir on the map";
-  document.getElementById('lat').innerHTML="About";
-  document.getElementById('long').innerHTML='';
-});
+        // pathLine.geometry.coordinates.push([properties[i].lat,properties[i].long])
+        polyline.addLatLng(
+          L.latLng(properties[i].lat, properties[i].long));
 
 
 
-// console.log(curved.geometry.coordinates);
+      });
 
-}, function (error) {
-     console.log("Error: " + error.code);
- });
-</script>
-<div id="info">
+      // var curved = turf.bezierSpline(pathLine);
+      // var polyline= L.polyline(curved.geometry.coordinates, {
+      //         color: '#000',
+      //         smoothFactor: 30.0
+      //       }).addTo(map)
+      myLayer.on('click', function (e) {
+        eV = e.layer.options.alt
+        //console.log(eV);
+        //console.log(Object.entries(properties)[eV][1].lDesc);
+        document.getElementById('lDesc').innerHTML = Object.entries(properties)[eV][1].lDesc;
+        document.getElementById('lat').innerHTML = Object.entries(properties)[eV][1].lat;
+        document.getElementById('long').innerHTML = Object.entries(properties)[eV][1].long;
+      });
 
-</div>
+      $('#about').click(function () {
+        document.getElementById('lDesc').innerHTML =
+          " I was always curious about the act of travelling. How it changes us and what mental processes take place in our heads as we interface with a different social and cultural setting. It makes me think like the first explorers but with a guide book. It feels there are lots of knowledge transformations that happen during travelling. We assimilate information from our information sources of trust. This may help us to make an expected reality when we visit a place. On my actual visit I found this expected reality to clash with what I actually saw. I could either conform to the expected reality and click pictures and do nothing reflective or stand back and analyse the differences and document them." +
+          "<br><br>" +
+
+          "This made me make this tool for digital reflection about the travelled space. It was made on an airport. I compare the activity of travel with exploration of unknown by comparing with the known. As we go around I think about how the place affects me, what I expect, what I see, and what it teaches me. I call these mental events, tied to the geophysical as - Digital Menhirs." +
+          "<br><br>Menhirs were supposedly the second man made thing on the face of the earth. The first on was the path. This is in reference to my reading of the book - Walkscapes by Francesco Careri. I will explore and hope to build make more self-reflecting digital tools this year. This is the first one. <br><br> I crave feedback and would be previledged to get your suggestions. I forgot to tell, I am" +
+          "<a href=\"http://rohitg.in/\" target=\"_blank\"> Rohit.</a>" +
+          "<br><br> To go back on menhirs just click on any menhir on the map";
+        document.getElementById('lat').innerHTML = "About";
+        document.getElementById('long').innerHTML = '';
+      });
+
+
+
+      // console.log(curved.geometry.coordinates);
+
+    }, function (error) {
+      console.log("Error: " + error.code);
+    });
+  </script>
+  <div id="info">
+
+  </div>
 
 </body>
 
