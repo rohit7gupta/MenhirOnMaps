@@ -11,8 +11,9 @@
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
 
 </head>
 
@@ -81,7 +82,7 @@
       };
       firebase.initializeApp(config);
 
-      var ref = firebase.database().ref().child("Berlin");
+      var ref = firebase.database().ref().child("lisboa");
       var x = document.getElementById("loc");
       var lat = '';
       var long = '';
@@ -108,6 +109,14 @@
 
 
       $(document).ready(function () {
+        var currentdate = new Date();
+        var datetime = currentdate.getDate() + "/" +
+          (currentdate.getMonth() + 1) + "/" +
+          currentdate.getFullYear() + " @ " +
+          currentdate.getHours() + ":" +
+          currentdate.getMinutes() + ":" +
+          currentdate.getSeconds();
+        console.log(datetime);
         $("circle").attr("fill", "red");
         $("button#submit").attr("disabled", true);
         $("#submit").click(function () {
@@ -120,7 +129,8 @@
             sDesc: $("#sDesc").val(),
             lDesc: $("#lDesc").val(),
             lat: lat,
-            long: long
+            long: long,
+            timestamp: datetime
           };
           console.log(message);
           console.log("clicked")
