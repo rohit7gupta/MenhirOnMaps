@@ -28,7 +28,7 @@
       Digital Menhirs
     </div>
     <div class="grid-item navbar collect">
-      Collections > Barcelona
+      Collections > Berlin
     </div>
     <div class="grid-item navbar " id="about">
       About
@@ -83,7 +83,7 @@
     };
     firebase.initializeApp(config);
 
-    var ref = firebase.database().ref().child("Barcelona"); //Get Data for Branch Italy
+    var ref = firebase.database().ref().child("Berlin"); //Get Data for Branch Italy
     var properties = '';
     ref.on("value", function (snapshot) {
       properties = snapshot.val();
