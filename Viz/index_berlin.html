@@ -64,8 +64,8 @@
   <script>
     L.mapbox.accessToken =
       'pk.eyJ1IjoiaW5kaWFudGlua2VyIiwiYSI6ImNpcTFzYnpqejAxMGlmaG5uOWlheDM3d2sifQ.IHWtGSGCMWq7T_SQCuv7LA';
-    var map = L.mapbox.map('map', 'mapbox.streets')
-      .setView([42.25, 2.432], 5.4);
+    var map = L.mapbox.map('map').setView([42.25, 2.432], 5.4).addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+    
   </script>
 
   <script src="https://www.gstatic.com/firebasejs/5.7.1/firebase.js"></script>
